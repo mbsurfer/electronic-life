@@ -1,0 +1,35 @@
+body {
+    padding-top: 50px;
+}
+
+.intro {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.content {
+    text-align: center;
+    table {
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+}
+
+.cell {
+    width: 16px;
+    height: 16px;
+    background: url(../images/wall.jpg) #fed8a8 no-repeat 0 0;
+    background-size: cover;
+
+    &.cell- {
+        background-image: none;
+    }
+
+    &.cell-o {
+        background-image: url(../images/critter.jpg);
+    }
+
+    &.cell-p {
+        background-image: url(../images/plant.jpg);
+    }
+}
