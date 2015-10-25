@@ -49,7 +49,7 @@ module Elife {
                 'ww##ppp      #www#    ##  ppp#ww',
                 'ww###ppp     www##     #   pp#ww',
                 'ww#          w###      #    p#ww',
-                'ww#   ####                   #ww',
+                'ww#   ####              m    #ww',
                 'ww#   ## pp    o             #ww',
                 'ww# o  #pppp     o       ### #ww',
                 'ww#    #pppp                 #ww',
