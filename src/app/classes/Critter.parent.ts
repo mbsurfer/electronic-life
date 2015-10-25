@@ -5,8 +5,13 @@ class Critter {
 
     protected direction:string;
 
-    constructor() {
-        this.direction = Util.randomDirection();
+    constructor(direction?) {
+        if (direction === undefined) {
+            this.direction = Util.randomDirection();
+        } else {
+            this.direction = direction;
+        }
+
     }
 
     public act(vector:Vector) {

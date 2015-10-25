@@ -12,24 +12,78 @@ body {
     table {
         display: inline-block;
         margin-bottom: 20px;
+        td {
+            background-color: #fed8a8;
+        }
     }
 }
 
 .cell {
     width: 16px;
     height: 16px;
-    background: url(../images/wall.jpg) #fed8a8 no-repeat 0 0;
-    background-size: cover;
+    background: url(../images/wall.jpg) no-repeat 0 0;
 
     &.cell- {
         background-image: none;
     }
 
     &.cell-o {
-        background-image: url(../images/critter.jpg);
+        background-image: url(../images/critter.png);
+        &.cell-r-n {
+            .rotate(0deg);
+        }
+        &.cell-r-e {
+            .rotate(90deg);
+        }
+        &.cell-r-s {
+            .rotate(180deg);
+        }
+        &.cell-r-w {
+            .rotate(270deg);
+        }
+    }
+
+    &.cell-m {
+        background-image: url(../images/moblin.jpg);
+        &.cell-r-n {
+            background-position: 0 0;
+        }
+        &.cell-r-e {
+            background-position: -16px -16px;
+        }
+        &.cell-r-s {
+            background-position: -16px 0;
+        }
+        &.cell-r-w {
+            background-position: 0 -16px;
+        }
+    }
+
+    &.cell-b {
+        background-image: url(../images/bullet.png);
+        &.cell-r-n, &.cell-r-s {
+            background-position: 0 0;
+        }
+        &.cell-r-e, &.cell-r-w {
+            background-position: 0 -16px;
+        }
     }
 
     &.cell-p {
         background-image: url(../images/plant.jpg);
     }
+
+    &.cell-w {
+        background-image: url(../images/water.jpg);
+    }
+
+
+}
+
+.rotate(@deg) {
+    -webkit-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    -o-transform: rotate(@deg);
+    transform: rotate(@deg);
 }

@@ -17,7 +17,7 @@ class World {
 
         map.forEach(function(line:string, y:number) {
             for (var x = 0; x < line.length; x++) {
-                self.grid.set(new Vector(x, y), Util.elementFromChar(legend, line[x], self));
+                self.grid.set(new Vector(x, y), Util.elementFromChar(legend, line[x]));
             }
         });
     }
@@ -48,10 +48,23 @@ class World {
                 if (output[x] === undefined) {
                     output[x] = [];
                 }
-                output[y][x] = Util.charFromElement(element);
+                output[y][x] = element;
             }
         }
         return output;
+    }
+
+    public getChar(element:any) {
+        var type = element.constructor.name;
+        var char = null;
+        console.log(type);
+        _.forEach(this.legend, function(val, i) {
+           if (val === type) {
+               char = i;
+               return false;
+           }
+        });
+        return char;
     }
 
 }

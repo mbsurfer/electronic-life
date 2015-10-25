@@ -40,23 +40,29 @@ module Elife {
         private buildWorld() {
 
             var plan =
-               ['############################',
-                '#      #    #      o      ##',
-                '#                      pppp#',
-                '#          #####        ppp#',
-                '##ppp      #   #    ##  ppp#',
-                '###ppp        ##     #   pp#',
-                '#           ###      #    p#',
-                '#   ####                   #',
-                '#   ## pp    o             #',
-                '# o  #pppp     o       ### #',
-                '#    #pppp                 #',
-                '############################'];
+               ['wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
+                'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
+                'ww############################ww',
+                'ww#      #    #      o      ##ww',
+                'ww#   m                  pppp#ww',
+                'ww#          #####        ppp#ww',
+                'ww##ppp      #www#    ##  ppp#ww',
+                'ww###ppp     www##     #   pp#ww',
+                'ww#          w###      #    p#ww',
+                'ww#   ####                   #ww',
+                'ww#   ## pp    o             #ww',
+                'ww# o  #pppp     o       ### #ww',
+                'ww#    #pppp                 #ww',
+                'ww############################ww',
+                'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
+                'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww'];
 
             this.world = world = new World(plan, {
                 '#': Wall,
                 'o': BouncingCritter,
-                'p': Plant
+                'p': Plant,
+                'w': Water,
+                'm': Moblin
             });
 
             this.displayWorld = this.world.toArray();
@@ -78,7 +84,7 @@ module Elife {
                     self.displayWorld = self.world.turn();
                     self.turnCount++;
                 }
-            }, 100);
+            }, 200);
         }
     }
 

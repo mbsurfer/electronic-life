@@ -7,25 +7,21 @@ class Util {
 
     static directionNames = [
         'n',
-        'ne',
         'e',
-        'se',
         's',
-        'sw',
-        'w',
-        'nw'
+        'w'
     ];
 
     static getDirections() {
         return {
             'n' :   new Vector( 0, -1),
-            'ne':   new Vector( 1, -1),
+            //'ne':   new Vector( 1, -1),
             'e' :   new Vector( 1,  0),
-            'se':   new Vector( 1,  1),
+            //'se':   new Vector( 1,  1),
             's' :   new Vector( 0,  1),
-            'sw':   new Vector(-1,  1),
-            'w' :   new Vector(-1,  0),
-            'nw':   new Vector(-1, -1)
+            //'sw':   new Vector(-1,  1),
+            'w' :   new Vector(-1,  0)
+            //'nw':   new Vector(-1, -1)
         };
     }
 
@@ -41,11 +37,11 @@ class Util {
         return Util.randomElement(Util.directionNames);
     }
 
-    static elementFromChar(legend:any, ch:string, world:World) {
+    static elementFromChar(legend:any, ch:string) {
         if (ch === ' ') {
             return null;
         }
-        var element = new legend[ch](world);
+        var element = new legend[ch]();
         element.originChar = ch;
         return element;
     }

@@ -23,6 +23,7 @@ class Grid {
     }
 
     public set(vector:Vector, value:string) {
+        //console.log('set value', value);
         this.space[vector.x + this.width * vector.y] = value;
     }
 
