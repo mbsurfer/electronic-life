@@ -148,8 +148,12 @@ gulp.task('compile-app', ['compile-ts'], function(){
 
     //concat js files
     return gulp.src([
-        config.tsOutputPath + '**/*.module.js',     //concat modules first
-        config.tsOutputPath + '**/*.js'             //concat the rest
+
+        config.tsOutputPath + 'classes/**.parent.js',   //concat parent classes first
+        config.tsOutputPath + 'classes/**.js',          //concat classes
+        config.tsOutputPath + '**/*.module.js',         //concat modules first
+        config.tsOutputPath + '**/*.js'                 //concat the rest
+
     ])
         .pipe(concat('app.js'))
         .pipe(gulp.dest(config.tsOutputPath));

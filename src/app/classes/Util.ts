@@ -33,11 +33,15 @@ class Util {
         return array[Math.floor(Math.random() * array.length)];
     }
 
-    static elementFromChar(legend:any, ch:string) {
+    static randomDirection() {
+        return Util.randomElement(Util.directionNames);
+    }
+
+    static elementFromChar(legend:any, ch:string, world:World) {
         if (ch === ' ') {
             return null;
         }
-        var element = new legend[ch]();
+        var element = new legend[ch](world);
         element.originChar = ch;
         return element;
     }

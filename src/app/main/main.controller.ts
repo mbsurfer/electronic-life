@@ -1,6 +1,9 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
 
+//global world
+var world;
+
 module Elife {
 
     declare var _; //lodash
@@ -44,7 +47,7 @@ module Elife {
                 '#    #pppp                 #',
                 '############################'];
 
-            this.world = new World(plan, {
+            this.world = world = new World(plan, {
                 '#': Wall,
                 'o': BouncingCritter,
                 'p': Plant
@@ -56,6 +59,10 @@ module Elife {
 
         public togglePlay() {
             this.isPlaying = !this.isPlaying;
+
+            if (this.isPlaying) {
+                this.world.turn();
+            }
         }
     }
 

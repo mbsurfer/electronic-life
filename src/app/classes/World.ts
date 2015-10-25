@@ -17,39 +17,26 @@ class World {
 
         map.forEach(function(line:string, y:number) {
             for (var x = 0; x < line.length; x++) {
-                self.grid.set(new Vector(x, y), Util.elementFromChar(legend, line[x]));
+                self.grid.set(new Vector(x, y), Util.elementFromChar(legend, line[x], self));
             }
         });
     }
 
     public turn() {
-        var self = this;
         var acted = [];
-        this.grid.forEach(function(critter, vector) {
-            if (critter.act && acted.indexOf(critter) === -1) {
-                acted.push(critter);
-                self.letAct(critter, vector);
+        this.grid.forEach(function(element, vector) {
+            if (element.act && acted.indexOf(element) === -1) {
+                acted.push(element);
+                element.act(vector);
+                console.log('acted');
             }
         }, this);
     }
 
-    public letAct(critter:any, vector:Vector) {
-        var action = critter.act(new View(this, vector));
-        if (action && action.type === 'move') {
-            var dest = this.checkDestination(action, vector);
-            if (dest && this.grid.get(dest) == null) {
-                this.grid.set(vector, null);
-                this.grid.set(dest, critter);
-            }
-        }
-    }
-
-    public checkDestination(action:any, vector:Vector) {
-        if (Util.getDirections.hasOwnProperty(action.direction)) {
-            var destination = vector.plus(Util.getDirections[action.direction]);
-            if (this.grid.isInside(destination)) {
-                return destination;
-            }
+    public checkDestination(direction:string, vector:Vector) {
+        var destination = vector.plus(Util.getDirections[direction]);
+        if (this.grid.isInside(destination)) {
+            return destination;
         }
     }
 
