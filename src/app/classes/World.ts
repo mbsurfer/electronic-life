@@ -45,8 +45,8 @@ class World {
         for (var y = 0; y < this.grid.height; y++) {
             for (var x = 0; x < this.grid.width; x++) {
                 var element = this.grid.get(new Vector(x, y));
-                if (output[x] === undefined) {
-                    output[x] = [];
+                if (output[y] === undefined) {
+                    output[y] = [];
                 }
                 output[y][x] = element;
             }

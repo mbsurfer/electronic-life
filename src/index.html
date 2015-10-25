@@ -31,50 +31,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Electronic Life</a>
+                    <a class="navbar-brand" ui-sref="app.play">Electronic Life</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a ui-sref="app.play">Play</a></li>
+                        <li><a ui-sref="app.edit">Edit</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
 
-        <div class="container">
-
-            <div class="intro">
-                <h1>Electronic Life</h1>
-                <p class="lead">A Zelda themed implementation of Electronic Life</p>
-            </div>
-
-            <div class="content">
-                <table>
-                    <tbody>
-                    <tr ng-repeat="row in main.displayWorld track by $index">
-                        <td ng-repeat="cell in row track by $index">
-                            <div ng-if="cell.orientation !== undefined"
-                                 class="cell cell-{{cell.originChar}} cell-r-{{cell.orientation}}"></div>
-                            <div ng-if="cell.orientation === undefined" class="cell cell-{{cell.originChar}}"></div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-                <div>
-                    Count: {{main.turnCount}}
-                </div>
-
-                <div>
-                    <a ng-click="main.togglePlay();" class="btn btn-default">{{(main.isPlaying) ? 'Pause' : 'Action'}}</a>
-
-                    <a ng-click="main.stepPlay();" class="btn btn-default">Step</a>
-
-                </div>
-
-            </div>
+        <div ui-view class="container">
 
         </div><!-- /.container -->
 

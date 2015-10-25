@@ -1,0 +1,32 @@
+<div class="intro">
+    <h1>Electronic Life</h1>
+    <p class="lead">A Zelda themed implementation of Electronic Life</p>
+</div>
+
+<div class="content">
+    <table>
+        <tbody>
+        <tr ng-repeat="row in play.displayWorld track by $index">
+            <td ng-repeat="cell in row track by $index">
+                <div ng-if="cell.orientation !== undefined"
+                     class="cell cell-{{cell.originChar}} cell-r-{{cell.orientation}}"></div>
+                <div ng-if="cell.orientation === undefined" class="cell cell-{{cell.originChar}}"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        Count: {{play.turnCount}}
+    </div>
+
+    <div>
+        <a ng-click="play.togglePlay();" class="btn btn-default">{{(play.isPlaying) ? 'Pause' : 'Action'}}</a>
+
+        <a ng-click="play.stepPlay();" class="btn btn-default">Step</a>
+
+        <a ui-sref="app.edit" class="btn btn-default">Edit</a>
+
+    </div>
+
+</div>

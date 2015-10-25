@@ -23,13 +23,7 @@ module Elife {
                     alert(e);
                 });
 
-            })
-            .config(['$stateProvider', function ($stateProvider) {
-                $stateProvider
-                    .state('app', {
-                        abstract: true
-                    });
-            }]);
+            });
     })();
 
 }

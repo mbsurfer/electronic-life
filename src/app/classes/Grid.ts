@@ -3,7 +3,7 @@
 
 class Grid {
 
-    private space:String[];
+    public space:String[];
     public width:number;
     public height:number;
 

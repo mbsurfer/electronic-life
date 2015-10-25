@@ -1,0 +1,43 @@
+<div class="intro">
+    <h1>Build A Map</h1>
+    <p class="lead">Build a custom map of predefined elements.</p>
+</div>
+
+<div class="content edit">
+
+    <form class="form-inline text-center">
+
+        <div class="form-group">
+            <label for="rows">Rows</label>
+            <input ng-model="edit.rowCount" type="number" class="form-control" id="rows" placeholder="10">
+        </div>
+
+        <div class="form-group">
+            <label for="cols">Columns</label>
+            <input ng-model="edit.colCount" type="number" class="form-control" id="cols" placeholder="10">
+        </div>
+
+        <button ng-click="edit.buildWorld()" type="submit" class="btn btn-default">Update Map</button>
+
+    </form>
+
+    <table class="edit-world">
+        <thead>
+            <tr>
+                <th ng-repeat="col in edit.displayWorld[0] track by $index">
+                    x
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="(rowIndex, row) in edit.displayWorld track by $index">
+                <td ng-repeat="(colIndex, cell) in row track by $index" ng-click="edit.setCell(colIndex, rowIndex)">
+                    <div class="cell cell-{{cell}}">
+                        <div class="hover"></div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
