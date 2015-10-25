@@ -9,21 +9,16 @@ class BouncingCritter extends Critter {
     private energy:number;
 
     constructor() {
+        super();
         this.energy = 20;
     }
 
     public act(vector:Vector) {
-
-        var view = new View(world, vector);
-
+        var view = new View(vector);
         if (view.look(this.direction) !== ' ') {
             this.direction = view.find(' ') || 's';
             this.turn();
         }
-
-        console.log(this.direction);
-        console.log(vector);
-
         this.move(vector);
     }
 
@@ -32,14 +27,13 @@ class BouncingCritter extends Critter {
     }
 
     private move(vector) {
-        console.log('move');
         var dest = world.checkDestination(this.direction, vector);
         if (dest == null || this.energy <= 1 || world.grid.get(dest) != null) {
             return false;
         }
-        this.energy -= 1;
+        //this.energy -= 1;
         world.grid.set(vector, null);
-        world.grid.set(dest, Util.charFromElement(this));
+        world.grid.set(dest, this);
         return true;
     }
 

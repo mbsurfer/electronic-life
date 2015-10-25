@@ -22,7 +22,7 @@ class Grid {
         return this.space[vector.x + this.width * vector.y];
     }
 
-    public set(vector:Vector, value:String) {
+    public set(vector:Vector, value:string) {
         this.space[vector.x + this.width * vector.y] = value;
     }
 

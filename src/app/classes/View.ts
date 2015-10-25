@@ -1,20 +1,20 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
 
+declare var world;
+
 class View {
 
-    private world:World;
     private vector:Vector;
 
-    constructor(world, vector) {
-        this.world = world;
+    constructor(vector) {
         this.vector = vector;
     }
 
     public look(dir:string) {
-        var target = this.vector.plus(Util.getDirections[dir]);
-        if (this.world.grid.isInside(target)) {
-            return Util.charFromElement(this.world.grid.get(target));
+        var target = this.vector.plus(Util.getDirection(dir));
+        if (world.grid.isInside(target)) {
+            return Util.charFromElement(world.grid.get(target));
         } else {
             return '#';
         }
@@ -22,7 +22,7 @@ class View {
 
     public findAll(ch:string) {
         var found = [];
-        for (var dir in Util.getDirections) {
+        for (var dir in Util.getDirections()) {
             if (this.look(dir) === ch) {
                 found.push(dir);
             }

@@ -16,13 +16,19 @@ module Elife {
 
         public isPlaying:boolean;
 
+        public turnCount:number = 0;
+
         public static $inject = [
             '$scope',
-            '$rootScope'
+            '$rootScope',
+            '$timeout',
+            '$interval'
         ];
 
         constructor(private $scope,
-                    private $rootScope
+                    private $rootScope,
+                    private $timeout,
+                    private $interval
         ) {
             var main = this;
 
@@ -54,15 +60,25 @@ module Elife {
             });
 
             this.displayWorld = this.world.toArray();
+        }
 
+        public stepPlay() {
+            this.displayWorld = this.world.turn();
+            this.turnCount++;
         }
 
         public togglePlay() {
+            var self = this;
             this.isPlaying = !this.isPlaying;
 
-            if (this.isPlaying) {
-                this.world.turn();
-            }
+            var playTimer = this.$interval(function(){
+                if (!self.isPlaying) {
+                    self.$interval.cancel(playTimer);
+                } else {
+                    self.displayWorld = self.world.turn();
+                    self.turnCount++;
+                }
+            }, 100);
         }
     }
 

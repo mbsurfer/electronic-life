@@ -62,7 +62,14 @@
                 </table>
 
                 <div>
+                    Count: {{main.turnCount}}
+                </div>
+
+                <div>
                     <a ng-click="main.togglePlay();" class="btn btn-default">{{(main.isPlaying) ? 'Pause' : 'Action'}}</a>
+
+                    <a ng-click="main.stepPlay();" class="btn btn-default">Step</a>
+
                 </div>
 
             </div>

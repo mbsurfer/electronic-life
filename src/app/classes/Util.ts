@@ -29,6 +29,10 @@ class Util {
         };
     }
 
+    static getDirection(dir) {
+        return Util.getDirections()[dir];
+    }
+
     static randomElement(array:any[]) {
         return array[Math.floor(Math.random() * array.length)];
     }

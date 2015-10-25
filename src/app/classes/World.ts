@@ -28,13 +28,13 @@ class World {
             if (element.act && acted.indexOf(element) === -1) {
                 acted.push(element);
                 element.act(vector);
-                console.log('acted');
             }
         }, this);
+        return this.toArray();
     }
 
     public checkDestination(direction:string, vector:Vector) {
-        var destination = vector.plus(Util.getDirections[direction]);
+        var destination = vector.plus(Util.getDirection(direction));
         if (this.grid.isInside(destination)) {
             return destination;
         }
